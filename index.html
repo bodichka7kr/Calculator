@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/metro/452/calculator.png" type="image/png">
+    <style>
+        body {
+            color: black;
+            font-size: 20px;
+            font-family: cursive;
+        }
+        
+        .calculator {
+            width: 330px;
+            height: 644px;
+            background-color: #051e45;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+        
+        .display {
+            width: 97%;
+            height: 40%;
+            background-color: white;
+            border-radius: 10px 10px 0px 0px;
+            margin: 10px auto 5px auto;
+            text-align: right;
+            border: 5px solid #051e45;
+        }
+        
+        .container {
+            padding-left: 5px;
+            display: grid;
+            grid-template-columns: 24% 24% 24% 24%;
+            grid-template-rows: 20% 20% 20% 20% 20%;
+            gap: 2px;
+        }
+        
+        .container>div {
+            text-align: center;
+            width: 78px;
+            height: 70px;
+            background-color: aqua;
+            border-radius: 5px;
+            font-size: 40px;
+        }
+        
+        #math {
+            background-color: #35a9b3;
+        }
+        
+        .container>div:hover,
+        .container>div.math_d:hover {
+            background-color: #b7dcdd;
+        }
+        
+        .item.input,
+        form {
+            height: 100%;
+        }
+        
+        input {
+            width: 300px;
+            margin-left: -2px;
+            font-size: 60px;
+            padding: 0px 10px;
+            outline: none;
+            background: none;
+            border: none;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="calculator">
+            <div class="display">
+                <div class="item input">
+                    <form name="form"><input type="text" name="textview" readonly></form>
+                </div>
+            </div>
+            <div class="container">
+                <div id="math" class="item" onclick="insert('(')">(</div>
+                <div id="math" class="item" onclick="insert(')')">)</div>
+                <div id="math" class="item clean" onclick="clean()">C</div>
+                <div id="math" class="item" onclick="back()">&lArr;</div>
+                <div class="item" onclick="insert('7')">7</div>
+                <div class="item" onclick="insert('8')">8</div>
+                <div class="item" onclick="insert('9')">9</div>
+                <div id="math" class="item" onclick="insert('*')">*</div>
+                <div class="item" onclick="insert('4')">4</div>
+                <div class="item" onclick="insert('5')">5</div>
+                <div class="item" onclick="insert('6')">6</div>
+                <div id="math" class="item" onclick="insert('-')">-</div>
+                <div class="item" onclick="insert('1')">1</div>
+                <div class="item" onclick="insert('2')">2</div>
+                <div class="item" onclick="insert('3')">3</div>
+                <div id="math" class="item" onclick="insert('+')">+</div>
+                <div id="math" class="item">.</div>
+                <div class="item">0</div>
+                <div id="math" class="item" onclick="insert('/')">/</div>
+                <div id="math" class="item" onclick="itog()">=</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function insert(num) {
+            document.form.textview.value = document.form.textview.value + num;
+        }
+
+        function clean() {
+            document.form.textview.value = "";
+        }
+
+        function back() {
+            let exp = document.form.textview.value;
+            document.form.textview.value = exp.substring(0, exp.length - 1);
+        }
+
+        function itog() {
+            let exp = document.form.textview.value;
+            if (exp) {
+                document.form.textview.value = eval(exp);
+            }
+        }
+    </script>
+</body>
+
+</html>
